@@ -22,3 +22,7 @@ erl_crash.dump
 # Ignore package tarball (built via "mix hex.build").
 http2_api-*.tar
 
+# Ignore mnesia data
+/priv/data/mnesia/*
+!/priv/data/mnesia/.gitkeep
+
