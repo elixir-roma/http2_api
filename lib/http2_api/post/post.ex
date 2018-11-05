@@ -1,12 +1,10 @@
 defmodule Http2Api.Post.Post do
-
   use Ecto.Schema
   import Ecto.Changeset
 
   schema "posts" do
-
-    field :title, :string
-    field :content, :string
+    field(:title, :string)
+    field(:content, :string)
 
     timestamps()
   end
@@ -20,10 +18,10 @@ defmodule Http2Api.Post.Post do
   def to_response(%__MODULE__{} = post) do
     post
     |> Map.from_struct()
-    |>Map.delete(:__meta__)
+    |> Map.delete(:__meta__)
     |> Map.put("_links", %{
-          "self" => to_hal_link(post)
-           })
+      "self" => to_hal_link(post)
+    })
   end
 
   def to_hal_link(%__MODULE__{} = post) do
@@ -32,4 +30,3 @@ defmodule Http2Api.Post.Post do
     }
   end
 end
-
